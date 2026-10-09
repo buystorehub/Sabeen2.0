@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120912">
+<title>Only For Sabeen 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #0d0710;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .25;
+    background-image:
+        radial-gradient(circle at 20% 20%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 30%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 55% 75%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 90%, #fff 0 1px, transparent 2px);
+    background-size:
+        180px 180px,
+        230px 230px,
+        260px 260px,
+        210px 210px;
+}
+
+.screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: none;
+    position: relative;
+    padding: 55px 20px 35px;
+}
+
+.screen.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn .6s ease;
+}
+
+.wrap {
+    width: min(1000px, 100%);
+    margin: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #eab7ce;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(42px, 9vw, 85px);
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(32px, 6vw, 55px);
+    margin-bottom: 15px;
+}
+
+p {
+    color: #d7c9d2;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 15px 27px;
+    margin-top: 28px;
+    background: #f2c5d8;
+    color: #240d1a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 35px #0008;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: #ffd7e6;
+}
+
+.btn:active {
+    transform: scale(.96);
+}
+
+.heart {
+    font-size: 65px;
+    animation: pulse 1.6s infinite;
+    margin-bottom: 18px;
+}
+
+.small {
+    font-size: 14px;
+    color: #a997a2;
+    margin-top: 14px;
+}
+
+/* SABEEN ANIMATION */
+
+.name-animation {
+    display: flex;
+    justify-content: center;
+    gap: clamp(5px, 2vw, 15px);
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.name-animation span {
+    display: inline-block;
+    font-size: clamp(45px, 12vw, 95px);
+    font-weight: bold;
+    color: #f6cadb;
+    text-shadow: 0 0 25px #ff4d8855;
+    opacity: 0;
+    transform: translateY(35px) scale(.6);
+    animation: letterReveal .7s forwards;
+}
+
+.name-animation span:nth-child(1) { animation-delay: .2s; }
+.name-animation span:nth-child(2) { animation-delay: .4s; }
+.name-animation span:nth-child(3) { animation-delay: .6s; }
+.name-animation span:nth-child(4) { animation-delay: .8s; }
+.name-animation span:nth-child(5) { animation-delay: 1s; }
+.name-animation span:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes letterReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* LETTER */
+
+.letter {
+    text-align: left;
+    max-width: 760px;
+    margin: 25px auto 0;
+    padding: 35px;
+    background: #fff8fb;
+    color: #351522;
+    border-radius: 8px;
+    box-shadow: 0 20px 70px #0008;
+    transform: rotate(-.5deg);
+}
+
+.letter p {
+    color: #5b3a47;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.letter .sign {
+    color: #351522;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 25px;
+}
+
+/* MEMORY CARD */
+
+.memory-card {
+    max-width: 760px;
+    margin: 30px auto;
+    padding: 40px 30px;
+    background: linear-gradient(145deg, #1b111c, #100a12);
+    border: 1px solid #ffffff12;
+    border-radius: 24px;
+    box-shadow: 0 20px 70px #0007;
+}
+
+.memory-icon {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.memory-card h3 {
+    font-size: 30px;
+    margin-bottom: 18px;
+    color: #f6cadb;
+}
+
+.memory-card p {
+    margin-bottom: 15px;
+}
+
+/* FUTURE VIDEO MEMORY */
+
+.future-memory {
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 45px 28px;
+    background: linear-gradient(145deg, #281323, #130b16);
+    border: 1px solid #f2c5d833;
+    border-radius: 25px;
+    box-shadow: 0 20px 65px #0008;
+}
+
+.future-memory .icon {
+    font-size: 65px;
+    margin-bottom: 22px;
+    animation: pulse 2s infinite;
+}
+
+.future-memory h3 {
+    color: #f6cadb;
+    font-size: clamp(25px, 5vw, 34px);
+    margin-bottom: 20px;
+}
+
+.future-memory p {
+    font-size: 19px;
+}
+
+.future-memory .highlight {
+    color: #ffbad3;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* NICKNAMES */
+
+.names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 760px;
+    margin: 35px auto;
+}
+
+.name {
+    padding: 13px 20px;
+    border-radius: 999px;
+    background: #1b1019;
+    border: 1px solid #ffffff20;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.screen.active .name {
+    animation: show .6s forwards;
+}
+
+.name:nth-child(1) { animation-delay: .1s; }
+.name:nth-child(2) { animation-delay: .2s; }
+.name:nth-child(3) { animation-delay: .3s; }
+.name:nth-child(4) { animation-delay: .4s; }
+.name:nth-child(5) { animation-delay: .5s; }
+.name:nth-child(6) { animation-delay: .6s; }
+.name:nth-child(7) { animation-delay: .7s; }
+.name:nth-child(8) { animation-delay: .8s; }
+.name:nth-child(9) { animation-delay: .9s; }
+.name:nth-child(10) { animation-delay: 1s; }
+.name:nth-child(11) { animation-delay: 1.1s; }
+.name:nth-child(12) { animation-delay: 1.2s; }
+
+/* FINAL */
+
+.final {
+    position: relative;
+    overflow: hidden;
+}
+
+.final h1 {
+    color: #f6cadb;
+}
+
+.quote {
+    max-width: 700px;
+    margin: 25px auto;
+    font-size: 22px;
+    color: #e4d2db;
+    line-height: 1.8;
+}
+
+.float-heart {
+    position: fixed;
+    bottom: -35px;
+    font-size: 20px;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* PAGE DOTS */
+
+.dots {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 9px;
+    z-index: 30;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff30;
+    transition: .3s;
+}
+
+.dot.on {
+    background: #f2c5d8;
+    box-shadow: 0 0 12px #f2c5d8;
+    transform: scale(1.2);
+}
+
+/* ANIMATIONS */
+
+@keyframes pulse {
+    50% { transform: scale(1.15); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .letter {
+        padding: 25px;
+    }
+
+    .letter p {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .memory-card {
+        padding: 30px 22px;
+    }
+
+    .future-memory {
+        padding: 35px 20px;
+    }
+
+    .future-memory p {
+        font-size: 17px;
+    }
+
+    .quote {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="dots" id="dots"></div>
+
+<!-- SCREEN 1: WELCOME -->
+
+<section class="screen active" id="s1">
+    <div class="wrap">
+
+        <div class="heart">💗</div>
+
+        <div class="eyebrow">
+            A tiny place on the internet
+        </div>
+
+        <h2>Hey, Sabeen Jee... 🥹</h2>
+
+        <div class="name-animation">
+            <span>S</span>
+            <span>A</span>
+            <span>B</span>
+            <span>E</span>
+            <span>E</span>
+            <span>N</span>
+        </div>
+
+        <p>
+            This isn't for just anyone.
+            <br>
+            This little corner of the internet
+            is made only for YOU, Sabeen Jee. 💗
+        </p>
+
+        <button class="btn" onclick="go(1)">
+            Open Your Surprise ✨
+        </button>
+
+        <div class="small">
+            Made especially for one cute & slightly pagal friend 😂❤️
+        </div>
+
+    </div>
+</section>
+
+<!-- SCREEN 2: PERSONAL LETTER -->
+
+<section class="screen" id="s2">
+    <div class="wrap">
+
+        <div class="eyebrow">
+            A little letter, just for you
+        </div>
+
+        <h2>Dear Sabeen Jee 💌</h2>
+
+        <div class="letter">
+
+            <p>
+                Sabeen Jee, pehle toh ek baat bataun?
+                Ap bohat cute ho. Aur haan,
+                thori si pagal bhi ho...
+                lekin ye baat apko pehle se pata hogi. 😂❤️
+            </p>
+
+            <p>
+                Pata nahi apko ye website kaisi lagegi,
+                lekin main chahta tha ke apke liye
+                kuch aisa banaun jo sirf apka ho.
+                Jisko dekh kar apke face par
+                ek choti si smile aa jaye. 🥹
+            </p>
+
+            <p>
+                Kal jab ap upset thi,
+                toh dil kar raha tha ke kisi tarah
+                apka mood acha kar sakun.
+                Shayad main har problem solve na kar paun,
+                lekin apki baat sun sakta hoon,
+                apke saath hans sakta hoon,
+                aur apko tang bhi kar sakta hoon. 😂
+            </p>
+
+            <p>
+                Aur haan, apne jo bhi kabhi share karna ho,
+                bina kisi hesitation ke kar sakti ho.
+                Main apko judge nahi karunga.
+                Apki feelings mere liye important hain. ❤️
+            </p>
+
+            <p>
+                Ab itna emotional bhi mat hona madam!
+                Warna mujhe bhi serious hona parega,
+                aur woh mere bas ki baat nahi. 🤭💕
+            </p>
+
+            <p>
+                Bas hamesha khush raha karo,
+                apki smile sach mein bohat pyari hai.
+                Aur ap jaisi cute, funny aur unique dost
+                milna bhi koi choti baat nahi. 💗
+            </p>
+
+            <div class="sign">
+                — Apka pagal sa dost 😂❤️
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="go(2)">
+            Next Surprise →
+        </button>
+
+    </div>
+</section>
+
+<!-- SCREEN 3: LITTLE STORY -->
+
+<section class="screen" id="s3">
+    <div class="wrap">
+
+        <div class="eyebrow">
+            A little reminder
+        </div>
+
+        <h2>For My Cute Friend Sabeen 💗</h2>
+
+        <div class="memory-card">
+
+            <div class="memory-icon">🌷🥹</div>
+
+            <h3>Ek Baat Yaad Rakhna, Madam Ji</h3>
+
+            <p>
+                Sabeen Jee, zindagi mein kabhi kabhi
+                din ache hote hain aur kabhi
+                thore mushkil.
+            </p>
+
+            <p>
+                Lekin iska matlab ye nahi ke
+                apki smile kam important ho gayi.
+                Ap deserve karti ho ke apki baat
+                suni jaye aur apko respect mile. ❤️
+            </p>
+
+            <p>
+                Aur agar kabhi mood off ho,
+                toh apke paas ek pagal dost hai
+                jo apki bak bak sunne aur
+                apko hansane ke liye ready hai. 😂
+            </p>
+
+            <p style="color:#f2c5d8">
+                Bas ek request hai...
+                Apni cute si smile kabhi mat khona. 🥹💗
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="go(3)">
+            Our Future Memories 🎥
+        </button>
+
+    </div>
+</section>
+
+<!-- SCREEN 4: FUTURE VIDEOS -->
+
+<section class="screen" id="s4">
+    <div class="wrap">
+
+        <div class="eyebrow">
+            A space for our little moments
+        </div>
+
+        <h2>Our Memories Are Still Loading... 🎥💕</h2>
+
+        <div class="future-memory">
+
+            <div class="icon">🎬💗</div>
+
+            <h3>Coming Soon, Sabeen Jee... 🥹</h3>
+
+            <p>
+                Abhi hum dono ki saath mein
+                koi videos nahi hain, Sabeen Jee... 🥹
+            </p>
+
+            <p style="margin-top:18px">
+                Lekin InshaAllah jab hum milenge,
+                hansenge aur cute si memories banayenge,
+                toh yahan hamari videos hongi. ❤️
+            </p>
+
+            <p class="highlight">
+                Filhaal ye jagah khaali hai,
+                bilkul hamari future memories ka
+                intezar kar rahi hai. 🤭💗
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="go(4)">
+            Kuch Cute Names Dekho 😂
+        </button>
+
+    </div>
+</section>
+
+<!-- SCREEN 5: CUTE NAMES -->
+
+<section class="screen" id="s5">
+    <div class="wrap">
+
+        <div class="eyebrow">
+            Exclusive nicknames for one special girl
+        </div>
+
+        <h2>Sabeen Jee Ke 12 Cute Names 😂❤️</h2>
+
+        <p>
+            In mein se kuch cute hain,
+            aur kuch apke nakhron ke liye. 🤭
+        </p>
+
+        <div class="names">
+            <div class="name">Sabeen Jee 💗</div>
+            <div class="name">Madam Ji 😂</div>
+            <div class="name">Cutie Pie 🥹</div>
+            <div class="name">Pagal Si Dost 🤭</div>
+            <div class="name">Drama Queen 🎭</div>
+            <div class="name">Miss Nakhray 🙄</div>
+            <div class="name">Princess 👑</div>
+            <div class="name">Miss Cute 🌷</div>
+            <div class="name">Guriya 💕</div>
+            <div class="name">Miss Late Reply 📱</div>
+            <div class="name">My Favorite Pagal 😂</div>
+            <div class="name">One & Only Sabeen ✨</div>
+        </div>
+
+        <p class="small">
+            Disclaimer: Madam Ji, in names par gussa karna mana hai! 😂
+        </p>
+
+        <button class="btn" onclick="go(5)">
+            One Last Surprise 🌙
+        </button>
+
+    </div>
+</section>
+
+<!-- SCREEN 6: FINAL -->
+
+<section class="screen final" id="s6">
+    <div class="wrap">
+
+        <div class="heart">💗</div>
+
+        <div class="eyebrow">
+            One last thing, only for Sabeen
+        </div>
+
+        <h1>Keep Smiling, Sabeen. 🥹</h1>
+
+        <div class="quote">
+            Sabeen Jee, ap mere liye
+            ek bohat special aur pyari dost ho.
+
+            <br><br>
+
+            Main nahi janta ke aane wale
+            dino mein kitni memories banengi,
+            lekin jitni bhi banengi,
+            umeed hai un mein bohat sari
+            hansi aur cute si masti hogi. ❤️
+
+            <br><br>
+
+            Aur jab kabhi apka mood off ho,
+            toh yaad rakhna ke
+            ap akeli nahi ho.
+
+            <br><br>
+
+            <strong>
+                You deserve happiness,
+                respect and a thousand beautiful smiles. 💗
+            </strong>
+
+            <br><br>
+
+            Ab smile karo madam,
+            itni mehnat se website banayi hai! 😂💕
+        </div>
+
+        <button class="btn" onclick="loveExplosion()">
+            Tap Here, Sabeen Jee 💗
+        </button>
+
+        <div id="finalMsg"
+             style="margin-top:25px;
+                    font-size:25px;
+                    color:#f2c5d8;
+                    min-height:40px;">
+        </div>
+
+        <p class="small">
+            Made only for Sabeen, by your pagal friend. ❤️
+        </p>
+
+    </div>
+</section>
+
+<script>
+
+// TOTAL SCREENS
+const total = 6;
+let current = 0;
+
+const dots = document.getElementById("dots");
+
+// CREATE PAGE DOTS
+for (let i = 0; i < total; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dots.appendChild(dot);
+}
+
+// UPDATE DOTS
+function updateDots() {
+    [...dots.children].forEach((dot, i) => {
+        dot.classList.toggle("on", i === current);
+    });
+}
+
+// SHOW SCREEN
+function show(n, push = true) {
+
+    if (n < 0 || n >= total) return;
+
+    current = n;
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById("s" + (n + 1))
+        .classList.add("active");
+
+    updateDots();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+    if (push) {
+        history.pushState(
+            { screen: n },
+            "",
+            "#story-" + n
+        );
+    }
+}
+
+// BUTTON NAVIGATION
+function go(n) {
+    show(n, true);
+}
+
+// GET PAGE FROM URL
+function getPageFromHash() {
+
+    const match = window.location.hash.match(/^#story-(\d+)$/);
+
+    if (match) {
+        const n = Number(match[1]);
+        if (n >= 0 && n < total) return n;
+    }
+
+    return 0;
+}
+
+// INITIALIZE
+function initialize() {
+
+    const n = getPageFromHash();
+
+    history.replaceState(
+        { screen: n },
+        "",
+        "#story-" + n
+    );
+
+    show(n, false);
+}
+
+initialize();
+
+// MOBILE / BROWSER BACK BUTTON
+window.addEventListener("popstate", function(event) {
+
+    let n;
+
+    if (
+        event.state &&
+        typeof event.state.screen === "number"
+    ) {
+        n = event.state.screen;
+    } else {
+        n = getPageFromHash();
+    }
+
+    show(n, false);
+});
+
+// FINAL HEART SURPRISE
+function loveExplosion() {
+
+    const msg = document.getElementById("finalMsg");
+
+    msg.textContent =
+        "Sabeen Jee, you're one of a kind! Stay happy, cutie. 😂💗";
+
+    for (let i = 0; i < 40; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "float-heart";
+
+            const emojis = ["❤️", "💕", "💗", "💖", "✨", "🌷"];
+
+            heart.textContent =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6500);
+
+        }, i * 60);
+    }
+}
+
+</script>
+
+</body>
+</html>
